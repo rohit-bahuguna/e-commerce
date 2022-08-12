@@ -1,14 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
-
+import { useSelector , useDispatch} from "react-redux";
+import { removeFromCart } from "../redux/actions/cartActions";
 const ShowCart = (props) => {
-  const { title, category, description, image, _id } = props.product;
+  
 
-const id = "62e961fd57210480ae138bd7"
- const removeItemfn = async () => {
+  const { title, category, description, image, id , quantity} = props.product;
+  const loginData = useSelector((state) => state.login);
+  const removeCart = useSelector((state) => state.cart.products);
+  const cartData = useSelector((state) => state.cart.products);
+ 
+  const dispatch = useDispatch();
+  console.log(id)
+
+
+  const removeItem = async ()=>{
     const url = "http://localhost:4000/cart/deletefromcart/"+id
-    const response = await axios.delete(url).catch((error) => console.log(error.massage))
+
+    const response = await axios.delete(url, {
+      headers: {
+        authorization: loginData.loginUsername.token,
+      },
+    }).catch((error) => console.log(error.massage))
+
     console.log("deleted" , response);
+    if(response.data !== null){
+      dispatch(removeFromCart(response.data._id))
+    }
+    
+  }
+
+ const removeItemfn =  () => {
+    if(loginData.loginStatus){
+      removeItem();
+
+    }else {
+      
+        dispatch(removeFromCart(id))
+      
+    }
+   
  }
 
   return (
@@ -45,17 +76,18 @@ const id = "62e961fd57210480ae138bd7"
 
         <div className="row">
           <div className="col-1">
-            <button className="bg-red">+</button>
+            <button className="bg-red" onClick={'updateQuantity'}>+</button>
           </div>
+          <p className="col-1">{quantity}</p>
           <div className="col-1">
             {" "}
             <button className="bg-red">-</button>
           </div>
-          <div className="col-10">
+          <div className="col-9">
             <div className="row">
-              <div className="col-10 float-end">
+              <div className="col-12 float-end">
                 {" "}
-                <button className="float-end" onClick={removeItemfn}>Remeve Item</button>
+                <button className="float-end" onClick={removeItemfn} >Remeve Item</button>
               </div>
             </div>
           </div>

@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser, logoutUser } from "../redux/actions/loginAction";
+import  { addToCart }  from "../redux/actions/cartActions";
 import Login from "./Login";
 const Header = () => {
   const navigate = useNavigate();

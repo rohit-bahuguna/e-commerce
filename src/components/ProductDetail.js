@@ -44,6 +44,8 @@ const ProductDetail = () => {
         description: tempProduct.description,
         image: tempProduct.image,
         category: tempProduct.category,
+        quantity: 1,
+
       };
 
       // console.log("product", product);
@@ -93,15 +95,7 @@ const ProductDetail = () => {
               <button>Add to Wishlist</button>
             </div>
           </div>
-          <br />
-          <div className="row">
-            <div className="col-6">
-              <button className="col-6 ">+</button>
-            </div>
-            <div className="col-6">
-              <button className="col-6 ">-</button>
-            </div>
-          </div>
+          
         </div>
       </div>
     </>

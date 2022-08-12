@@ -10,6 +10,15 @@ export const cartReducer = (state = tempState, action) => {
             // console.log('state', state);
             let temp = [...state.products, payload];
             return {products: temp}
+        case actionTypes.REMOVEFROMCART :
+            let item = state.products;
+         const newItems =   item.filter((value , index)=> {
+                return value.id !== payload ;
+            })
+            console.log(newItems)
+            let tempitem = [...newItems];
+            return {products: tempitem}
+          //  console.log("remove from cart" ,state , payload )
         default:
             return state
     }

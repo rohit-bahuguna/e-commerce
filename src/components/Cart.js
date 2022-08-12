@@ -9,48 +9,8 @@ const Cart = () => {
   // const navigate = useNavigate();
 
   const cartData = useSelector((state) => state.cart.products);
-  const loginData = useSelector((state) =>{state.login});
-  console.log(loginData.loginStatus);
-
-  const dispatch = useDispatch();
-  console.log(cartData);
-
-  const placeOrder = () => {
-    console.log("order placed....");
-
-    //dispatch for adding product in orders
-    //navigate to orders page
-  };
-
-  // console.log("-----------cart data--------------", cartData);
-
-
-  const getallcart = async () => {
-    console.log(loginData.loginUsername.token);
-    const url = "http://localhost:4000/cart/getallcart";
-    const response = await axios
-      .get(url, {
-        headers: {
-          authorization: loginData.loginUsername.token,
-        },
-      })
-      .catch((error) => console.log(error));
-
-    console.log("got all cart  -->>> ", response.data);
-
-    if (response.data.length !== 0) {
-      response.data.map((value) => {
-        dispatch(addToCart(value.product));
-        // console.log(value.product)
-      });
-    }
-  };
-
-
-  if(loginData.loginStatus){
-    getallcart();
-  }
-
+ //console.log(cartData[0]._id)
+console.log(cartData);
 
   return (
     <>
@@ -61,11 +21,12 @@ const Cart = () => {
       </div>
 
       <div className="row bg-success bg-opacity-10">
-        {cartData.map((item) => {
-          return <ShowCart product={item} key={item._id}></ShowCart>;
+        {cartData && cartData.map((item) => {
+               // console.log(item.id)
+          return <ShowCart product={item}  key={item.id }></ShowCart>;
         })}
 
-        <div>{/*  */}</div>
+        
       </div>
 
       {/* <div className="row bg-info bg-opacity-10">

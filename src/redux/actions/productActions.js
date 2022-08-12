@@ -6,3 +6,10 @@ export const setProducts = (response) => {
         payload: response
     }
 }
+
+export const deleteProduct = (id)=>{
+    return {
+        type: actionTypes.DELETEPRODUCT,
+        payload :id
+    }
+}
