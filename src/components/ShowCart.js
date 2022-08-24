@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useSelector , useDispatch} from "react-redux";
 import { removeFromCart } from "../redux/actions/cartActions";
+import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const ShowCart = (props) => {
   
 
-  const { title, category, description, image, id , quantity} = props.product;
+  const { title, category, description, image, id , quantity , price} = props.product;
   const loginData = useSelector((state) => state.login);
   const removeCart = useSelector((state) => state.cart.products);
   const cartData = useSelector((state) => state.cart.products);
@@ -33,66 +36,55 @@ const ShowCart = (props) => {
  const removeItemfn =  () => {
     if(loginData.loginStatus){
       removeItem();
-
+      toast.info("Removed from cart")
     }else {
       
         dispatch(removeFromCart(id))
-      
+      toast.info("Removed from cart")
     }
    
  }
 
   return (
     <>
-      <div className="row ">
-        <div className="row">
-          <table className="table table-bordered">
-            <tr>
-              <th>Sr No</th>
-              <th>Name</th>
-              <th>Image</th>
-              <th>Price</th>
-              <th>Quantity</th>
-              <th>Cost</th>
-            </tr>
+      <ToastContainer/>
+    
 
-            <tr>
-              <td>1</td>
-              <td>{title}</td>
-              <td>
-                <img
-                  src={image}
-                  style={{ "max-width": 100 }}
-                  className="img-fluid"
-                  alt="img"
-                />
-              </td>
-              <td>{title}</td>
-              <td>1</td>
-              <td>{title}</td>
-            </tr>
-          </table>
-        </div>
-
-        <div className="row">
-          <div className="col-1">
-            <button className="bg-red" onClick={'updateQuantity'}>+</button>
-          </div>
-          <p className="col-1">{quantity}</p>
-          <div className="col-1">
-            {" "}
-            <button className="bg-red">-</button>
-          </div>
-          <div className="col-9">
-            <div className="row">
-              <div className="col-12 float-end">
-                {" "}
-                <button className="float-end" onClick={removeItemfn} >Remeve Item</button>
-              </div>
+      
+         
+         <div class="row ">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+               <div class="box">
+                  <div class="option_container">
+                     <div class="options" >
+                  <button   type="button" class=" btn btn-outline-danger " onClick={removeItemfn}>  
+                           Remove
+                       </button>
+                       <br/>
+                  <div className="d-flex flex-row justify-content-between " > 
+                          
+                          <button type="button" class=" btn btn-outline-dark p-10">+</button>
+                          <button type="button" class=" btn btn-outline-dark ">-</button>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="img-box">
+                       <img src={image} alt="" />
+                      <div></div>
+                  </div>
+                  <div class="detail-box">
+                     <h5>
+                        {title}
+                     </h5>
+                     <h6>
+                        {price}
+                     </h6>
+                  </div>
+               </div>
             </div>
-          </div>
-        </div>
-      </div>
+        
+         </div>
+      
     </>
   );
 };

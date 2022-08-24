@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -38,8 +38,8 @@
 }
 
 
+ */
 
-/* Custom CSS */
-.product-item {
-  border: 1px solid #282c34;
-}
+
+.appStyle{ margin-top: 20px;
+  margin-bottom: 30px}

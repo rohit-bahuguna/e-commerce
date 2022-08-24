@@ -4,7 +4,8 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedProduct } from "../redux/actions/productDetailActions";
 import { addToCart } from "../redux/actions/cartActions";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const ProductDetail = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -34,6 +35,7 @@ const ProductDetail = () => {
 
   const addtoCart = async () => {
     dispatch(addToCart(tempProduct));
+    toast.success("product added to cart")
     // add to cart api call from here
     if (loginData.loginStatus) {
       const url = "http://localhost:4000/cart/addtocart";
@@ -57,13 +59,14 @@ const ProductDetail = () => {
           },
         })
         .catch((err) => console.log("erroe----->", err));
-
+       // toast.success("product added to cart")
       console.log("product added to cart");
     }
   };
 
   return (
     <>
+      <ToastContainer/>
       <div className="row bg-info bg-opacity-50">
         <div className="col-12">Product Detail</div>
       </div>
@@ -98,8 +101,12 @@ const ProductDetail = () => {
           
         </div>
       </div>
+
+       
     </>
   );
 };
 
 export default ProductDetail;
+
+

@@ -21,11 +21,12 @@ const Login = () => {
 
 
   if (loginData.loginStatus) {
-    navigate("/productlist");
+    navigate("/");
   }
 
 
   const getallcart = async () => {
+ 
     console.log(loginData.loginUsername.token);
     const url = "http://localhost:4000/cart/getallcart";
     const response = await axios
@@ -61,8 +62,9 @@ const Login = () => {
 
   })
 
-  const loginFn = async () => {
+  const loginFn = async (e) => {
     // take two input values
+    e.preventDefault()
     let username = inputRef1.current.value;
     let password = inputRef2.current.value;
     let email = inputRef3.current.value;
@@ -98,28 +100,35 @@ const Login = () => {
   };
   return (
     <>
-      <div className="row bg-info bg-opacity-50">
-        <div className="col-12">
-          <h2>Login Page</h2>
-        </div>
-      </div>
-      <div className="row bg-info bg-opacity-50">
-        <div className="col-12">
-          Username: <input type="text" ref={inputRef1} name="username" /> <br />
-          email: <input type="email" ref={inputRef3} name="password" />
-          <br />
-          Password: <input type="password" ref={inputRef2} name="password" />
-          <button onClick={loginFn}>Login</button>
-        </div>
-      </div>
-      <div className="row bg-info bg-opacity-50">
-        <div className="col-12">
-          <h5>New User?</h5>
-          <Link to="/signup">
-            <button className="btn btn-primary btn-sm ">Create Account</button>
-          </Link>
-        </div>
-      </div>
+      <section className="why_section layout_padding">
+         <div className="container">
+         
+            <div className="row">
+               <div className="col-lg-8 offset-lg-2">
+                  <div className="full">
+                     <form >
+                        <fieldset>
+                          Name: <input type="text" ref={inputRef1} name="username" required/>
+                           email: <input type="email" ref={inputRef3} name="password"  required/>
+                         
+                           Password: <input type="password" ref={inputRef2} name="password" required/>
+                    
+                    <input className="rounded-pill" type="submit" value="Log in" onClick={(e) => { loginFn(e) }} />
+                    <br/>
+                    <Link to="/signup">
+                      <input className="rounded-pill" type="submit" value="New Here Create Account"  />
+                  </Link>
+                        </fieldset>
+                  
+                      </form>
+                               
+              </div>
+              
+                         
+               </div>
+            </div>
+         </div>
+      </section>
     </>
   );
 };

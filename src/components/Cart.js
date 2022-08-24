@@ -11,24 +11,60 @@ const Cart = () => {
   const cartData = useSelector((state) => state.cart.products);
  //console.log(cartData[0]._id)
 console.log(cartData);
-
+let price = 0
   return (
     <>
-      <div className="row bg-info bg-opacity-50">
-        <div className="col-12">
-          <h2>Cart</h2>
-        </div>
-      </div>
+      <section class="product_section layout_padding">
+        <div className="container d-flex flex-lg-row justify-around flex-md-row">
+           <div class="container flex-grow-1">
 
-      <div className="row bg-success bg-opacity-10">
+      
         {cartData && cartData.map((item) => {
-               // console.log(item.id)
+               // console.log(item)
+          price += item.price
           return <ShowCart product={item}  key={item.id }></ShowCart>;
         })}
 
         
-      </div>
-
+          </div>
+          
+        <div className="container">
+          
+         <div class="row ">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+               <div class="box">
+                  
+              <div className=" d-flex flex-column justify-content-start text-left ">
+                    <h5>Price <span>  {cartData.length} items</span> : <span> ₹{price}</span></h5>
+                    <h5>Discount <span> : 0</span> </h5>
+                    <h5>Delivery Charges <span> : 0</span></h5>
+                    <h5> Secured Packaging Fee <span> : 0</span></h5>
+                    </div>
+              
+                  <div class="detail-box">
+                     <h5>
+                        Total Amount
+                     </h5>
+                     <h6>
+                        {price}
+                     </h6>
+                  </div>
+                   <div class="options d-flex flex-row justify-content-around">
+                        <Link to="/productlist"><button   type="button" class="btn btn-outline-danger">
+                           Shop More
+                        </button></Link>
+                        <button   type="button" class="btn btn-outline-danger">
+                           Order Now
+                        </button>
+                     </div>
+               </div>
+            </div>
+        
+         </div>
+      
+        </div>
+     </div>
+</section>
       {/* <div className="row bg-info bg-opacity-10">
         <div className="col-6 text-center">
           <button className="btn btn-success" onClick={placeOrder}>

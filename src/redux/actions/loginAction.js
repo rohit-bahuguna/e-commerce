@@ -1,4 +1,4 @@
-import { getConfig } from "@testing-library/react";
+
 import { actionTypes } from "../constants/actionTypes";
 
 export const loginUser = (username) => {

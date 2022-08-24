@@ -35,30 +35,65 @@ const ProductList = () => {
 
   return (
     <>
-      <div className="row bg-success bg-opacity-50">
-        <div className="col-12">HomePage - Product List</div>
-      </div>
+     
 
-      <div className="row bg-success bg-opacity-10">
-        <div className="col-12">
-          <div className="row">
+   <section className="product_section layout_padding">
+      <div className="container">
+         <div className="heading_container heading_center">
+            <h2>
+               Our <span>products</span>
+            </h2>
+         </div>
+         <div className="row">
             {tempData &&
               tempData.map((temp, index) => (
-                <div className="col-4 product-item" key={index + temp.title}>
-                  <div>
-                    <Link to={`/productdetail/${temp.id}`}>
-                      <img src={temp.image} className="img-fluid" />
-                    </Link>
+              
+                <div className="col-sm-4 col-md-4 col-lg-3">
+                  <Link to={`/productdetail/${temp.id}`}>
+                      
+                    
+               <div className="box">
+                  {/* <div className="option_container">
+                     <div className="options">
+                        <Link to="#" className="option1">
+                           Men's Shirt
+                        </Link>
+                        <Link to="#" className="option2">
+                           Buy Now
+                        </Link>
+                     </div>
+                  </div> */}
+                  <div className="img-box">
+                     <img src={temp.image} className="img-fluid " />
+                    
                   </div>
-                  <div>{temp.title}</div>
-                  <div>{temp.price}</div>
-                </div>
+                 
+                  </div>
+                   <div className="detail-box text-center text-danger text-opacity-75">
+                     <h5 >
+                        {temp.title}
+                     </h5>
+                     <h6 className="text-dark fs-5">
+                          Price : {temp.price}
+                     </h6>
+                    </div>
+                    </Link>
+            </div>
+
               ))}
-          </div>
-        </div>
+         </div>
       </div>
+      
+      
+   </section>
+
+
+
+
+
     </>
   );
 };
 
 export default ProductList;
+
