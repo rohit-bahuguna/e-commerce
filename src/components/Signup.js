@@ -42,7 +42,7 @@ const Signup = () => {
     console.log("useername and password", username, password, email);
 
     // call api with username and password
-    const url = "http://localhost:4000/user/singup/";
+    const url = "http://ecommerceapibyrohitbahuguna.herokuapp.com/user/singup/";
     const response = await axios.post(url, obj).catch((err) => {
       console.log("->>>>>>>>", err);
       toast.error(err.response.data.massage)

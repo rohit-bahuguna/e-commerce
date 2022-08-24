@@ -15,7 +15,7 @@ const Admin_Product_List = () => {
  
 
   const fetchProductsList = () => {
-    fetch("http://localhost:4000/product")
+    fetch("http://ecommerceapibyrohitbahuguna.herokuapp.com/product")
       .then((data) => data.json())
       .then((response) => {
         // console.log(response);
@@ -35,7 +35,7 @@ const Admin_Product_List = () => {
 
   const deleteFn = async (id) => {
     console.log("hit api for product delete - DELETE API");
-    const url = `http://localhost:4000/product/${id}`;
+    const url = `http://ecommerceapibyrohitbahuguna.herokuapp.com/product/${id}`;
     const response = await axios.delete(url);
     console.log("from list", response);
    if(response.data.deletedCount == 1){

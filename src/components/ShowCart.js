@@ -18,7 +18,7 @@ const ShowCart = (props) => {
 
 
   const removeItem = async ()=>{
-    const url = "http://localhost:4000/cart/deletefromcart/"+id
+    const url = "http://ecommerceapibyrohitbahuguna.herokuapp.com/cart/deletefromcart/"+id
 
     const response = await axios.delete(url, {
       headers: {

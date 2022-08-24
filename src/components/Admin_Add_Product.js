@@ -41,7 +41,7 @@ console.log(uuid())
       obj.category !== ""
     ) {
       
-      const url = "http://localhost:4000/product/";
+      const url = "http://ecommerceapibyrohitbahuguna.herokuapp.com/product/";
 
       const response = await axios
         .post(url, obj)
