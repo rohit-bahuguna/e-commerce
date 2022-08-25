@@ -31,23 +31,12 @@ const Header = () => {
 
   return (
     <>
-      {/* <div className="row bg-info bg-opacity-50">
-        <div className="col-6">
-          <h2>Header</h2>
-        </div>
-        <div className="col-6">
-          <h3>
-            {loginData.loginStatus
-              ? `Welcome ${loginData.loginUsername.user.username}`
-              : ""}
-          </h3>
-        </div>
-      </div> */}
+     
      
         <header className="header_section ">
          <div className="container">
             <nav className="navbar navbar-expand-lg custom_nav-container ">
-               <Link className="navbar-brand" to="/"><img width="250" src="../images/logo.png" alt="#" /></Link>
+               <Link className="navbar-brand" to="/"><img width="250" src="../images/Logo.jpg" alt="#" /></Link>
                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                   aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <span className=""> </span>

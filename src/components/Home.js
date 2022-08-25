@@ -1,6 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+
+
+
 const Home = () => {
+
+const tempData = useSelector((state) => state.allProducts.products);
+
+if (tempData.length !== 0) {
+   tempData.length -= tempData.length - 4; 
+}
+   
     return (
         <div className="hero_area">
 
@@ -24,12 +36,10 @@ const Home = () => {
                                  On Everything
                               </h1>
                               <p>
-                                 Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse
-                                 dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto
-                                 veritatis delectus repellat modi impedit sequi.
+                                 If you would like to experience the best of online shopping for men, women and kids in India, you are at the right place. My Store is the ultimate destination for fashion and lifestyle.
                               </p>
                               <div className="btn-box">
-                                 <Link to="" className="btn1">
+                                 <Link to="productlist" className="btn1">
                                     Shop Now
                                  </Link>
                               </div>
@@ -93,13 +103,7 @@ const Home = () => {
                   </div>
                </div>
             </div>
-            <div className="container">
-               <ol className="carousel-indicators">
-                  <li data-target="#customCarousel1" data-slide-to="0" className="active"></li>
-                  <li data-target="#customCarousel1" data-slide-to="1"></li>
-                  <li data-target="#customCarousel1" data-slide-to="2"></li>
-               </ol>
-            </div>
+            
          </div>
             </section>
             {/* why_section  */}
@@ -182,7 +186,7 @@ const Home = () => {
                      Vitae fugiat laboriosam officia perferendis provident aliquid voluptatibus dolorem, fugit ullam sit
                      earum id eaque nisi hic? Tenetur commodi, nisi rem vel, ea eaque ab ipsa, autem similique ex unde!
                   </p>
-                  <Link to="">
+                  <Link to="/productlist">
                      Shop Now
                   </Link>
                </div>
@@ -192,7 +196,7 @@ const Home = () => {
             </section>
             
 
-            <section className="product_section layout_padding">
+           <section className="product_section layout_padding">
       <div className="container">
          <div className="heading_container heading_center">
             <h2>
@@ -200,39 +204,42 @@ const Home = () => {
             </h2>
          </div>
          <div className="row">
-            <div className="col-sm-6 col-md-4 col-lg-4">
+            {tempData &&
+              tempData.map((temp, index) => (
+              
+                <div className="col-sm-4 col-md-4 col-lg-3">
+                  <Link to={`/productdetail/${temp.id}`}>
+                      
+                    
                <div className="box">
-                  <div className="option_container">
-                     <div className="options">
-                        <Link to="" className="option1">
-                           Men's Shirt
-                        </Link>
-                        <Link to="" className="option2">
-                           Buy Now
-                        </Link>
-                     </div>
-                  </div>
+                 
                   <div className="img-box">
-                     <img src="images/p1.png" alt=""/>
+                     <img src={temp.image} className="img-fluid " />
+                    
                   </div>
-                  <div className="detail-box">
-                     <h5>
-                        Men's Shirt
+                 
+                  </div>
+                   <div className="detail-box text-center text-danger text-opacity-75">
+                     <h5 >
+                        {temp.title}
                      </h5>
-                     <h6>
-                        $75
+                     <h6 className="text-dark fs-5">
+                          Price : {temp.price}
                      </h6>
-                  </div>
-               </div>
+                    </div>
+                    </Link>
             </div>
 
-         </div>
-         <div className="btn-box">
-            <Link to="">
+              ))}
+                </div>
+                 <div className="btn-box">
+            <Link to="/productlist">
                View All products
             </Link>
          </div>
       </div>
+      
+      
    </section>
 
         </div>

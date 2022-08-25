@@ -53,16 +53,7 @@ const ProductList = () => {
                       
                     
                <div className="box">
-                  {/* <div className="option_container">
-                     <div className="options">
-                        <Link to="#" className="option1">
-                           Men's Shirt
-                        </Link>
-                        <Link to="#" className="option2">
-                           Buy Now
-                        </Link>
-                     </div>
-                  </div> */}
+                 
                   <div className="img-box">
                      <img src={temp.image} className="img-fluid " />
                     
