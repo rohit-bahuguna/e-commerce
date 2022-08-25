@@ -23,7 +23,7 @@ const ProductDetail = () => {
   // console.log('----login data from selector for cart -----', cartData);
 
   const fetchProductDetail = async () => {
-    const url = "http://ecommerceapibyrohitbahuguna.herokuapp.com/product/" + id;
+    const url = "https://ecommerceapibyrohitbahuguna.herokuapp.com/product/" + id;
     const response = await axios.get(url);
 
     dispatch(setSelectedProduct(response.data));
@@ -38,7 +38,7 @@ const ProductDetail = () => {
     toast.success("product added to cart")
     // add to cart api call from here
     if (loginData.loginStatus) {
-      const url = "http://ecommerceapibyrohitbahuguna.herokuapp.com/cart/addtocart";
+      const url = "https://ecommerceapibyrohitbahuguna.herokuapp.com/cart/addtocart";
       let product = {
         id: tempProduct.id,
         title: tempProduct.title,

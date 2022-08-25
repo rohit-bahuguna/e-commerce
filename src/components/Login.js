@@ -28,7 +28,7 @@ const Login = () => {
   const getallcart = async () => {
  
     console.log(loginData.loginUsername.token);
-    const url = "http://ecommerceapibyrohitbahuguna.herokuapp.com/cart/getallcart";
+    const url = "https://ecommerceapibyrohitbahuguna.herokuapp.com/cart/getallcart";
     const response = await axios
       .get(url, {
         headers: {
@@ -77,7 +77,7 @@ const Login = () => {
     console.log("useername and password", username, password, email);
 
     // call api with username and password
-    const url = "http://ecommerceapibyrohitbahuguna.herokuapp.com/user/singin/";
+    const url = "https://ecommerceapibyrohitbahuguna.herokuapp.com/user/singin/";
     const response = await axios.post(url, obj).catch((err) => {
       console.log(err);
     });

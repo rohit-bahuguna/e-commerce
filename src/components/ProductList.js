@@ -19,7 +19,7 @@ const ProductList = () => {
   // }
 
   const fetchProductsList = () => {
-    fetch("http://ecommerceapibyrohitbahuguna.herokuapp.com/product/")
+    fetch("https://ecommerceapibyrohitbahuguna.herokuapp.com/product/")
       .then((data) => data.json())
       .then((response) => {
        console.log(response);
